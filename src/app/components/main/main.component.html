@@ -1,0 +1,15 @@
+<app-header [user]="userformServer">
+  <h2>{{title}}</h2>
+</app-header>
+<nav>
+  <button [routerLink]="['/coupons']">Coupons</button>
+  <button [routerLink]="['/companies']">Companies</button>
+
+
+</nav>
+
+
+<main>
+
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,12 @@
+<header>
+  <a [routerLink]="['']" routerLinkActive="router-link-active" (click)="setTitle('Home')">
+    <h2>{{title}}</h2>
+  </a>
+  <ng-content></ng-content>
+  <span>
+    <button [routerLink]="['/login']" routerLinkActive="router-link-active" *ngIf="!user1">Login</button>
+    <button *ngIf="user1">{{user1}}</button>
+  </span>
+
+
+</header>
