@@ -1,10 +1,9 @@
 <div class="sortBy">
 
   <select style="width: 150px">
-    <option>Restaurants</option>
-    <option>Camping</option>
-    <option>Leisure</option>
-    <option>Avatiah</option>
+    <option *ngFor="let type of couponType; let i=index" (click)="avatiah=[i]"> {{type | titlecase  }}
+    </option>
+
   </select>
 
   <span style="float: inline-end; margin-right: 5px">Sort By:</span>
@@ -13,14 +12,13 @@
 
 
 <ul>
-  <div *ngFor="let item of items" class="coupon">
-    <img
-      src="https://www.bowlbrunswick.com/sites/brunswick/files/styles/xl_responsive/public/Traditional_PartiesHeroModules_750x1000_2x.jpg?itok=QffFcR-4">
-    <div class="couponBody">Title
-      <p class="elips">aogfjnagjangk navkanvakn akn akn knaogfjnagjangk navkanvakn akn akn knaogfjnagjangk navkanvakn
-        akn
-        akn
-        knaogfjnagjangk navkanvakn akn akn knaogfjnagjangk navkanvakn akn akn kn k n</p>
+  <div *ngFor="let coupon of items" [hidden]="coupon.type==couponType[i]" class="coupon">
+    <div class="couponPicture">
+      <img src="https://www.dw.com/image/48396304_303.jpg">
+      <span>{{ coupon.startDate | date }}</span>
+    </div>
+    <div class="couponBody">{{coupon.title}}
+      <p>this is a line short enough to fit in I think and if not well itaiojgiagnaingsiang aingiangs iansg iang .</p>
       <a>...</a>
     </div>
   </div>
