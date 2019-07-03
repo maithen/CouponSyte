@@ -1,27 +1,30 @@
 <div class="sortBy">
 
   <select style="width: 150px">
-    <option *ngFor="let type of couponType; let i=index" (click)="avatiah=[i]"> {{type | titlecase  }}
+    <option *ngFor="let type of couponType; let i=index;" (click)="sortBy=type">
+      {{type | titlecase}}
     </option>
 
   </select>
-
   <span style="float: inline-end; margin-right: 5px">Sort By:</span>
+
 </div>
 
 
 
 <ul>
-  <div *ngFor="let coupon of items" [hidden]="coupon.type==couponType[i]" class="coupon">
-    <div class="couponPicture">
-      <img src="https://www.dw.com/image/48396304_303.jpg">
-      <span>{{ coupon.startDate | date }}</span>
+  <ng-container *ngFor="let coupon of items">
+    <div *ngIf="coupon.type==sortBy || sortBy==couponType[0]" class="coupon">
+      <div class="couponPicture">
+        <img src="https://www.dw.com/image/48396304_303.jpg">
+        <span>{{ coupon.startDate | date }}</span>
+      </div>
+      <div class="couponBody">{{coupon.title}}
+        <p>this is a line short enough to fit in I think and if notell itaiojgiagnaingsiang ain ell itaiojgiagnaingsiang
+          ain ell itaiojgiagnaingsiang ain well itaiojgiagnaingsiang aingiangs iansg iang .</p>
+        <a>...</a>
+      </div>
     </div>
-    <div class="couponBody">{{coupon.title}}
-      <p>this is a line short enough to fit in I think and if not well itaiojgiagnaingsiang aingiangs iansg iang .</p>
-      <a>...</a>
-    </div>
-  </div>
-
+  </ng-container>
 
 </ul>

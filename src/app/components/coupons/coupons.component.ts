@@ -4,6 +4,7 @@ import { HeaderTitleService } from 'src/app/services/header-title.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { CouponServiceService } from 'src/app/services/coupon-service.service';
 import { Observable, observable } from 'rxjs';
+import { all } from 'q';
 
 @Component({
   selector: 'app-coupons',
@@ -13,15 +14,19 @@ import { Observable, observable } from 'rxjs';
 })
 export class CouponsComponent implements OnInit {
   items;
+
   couponType = [
+    'ALL',
     'RESTAURANTS',
     'ELECTRONICS',
     'FOOD',
     'HEALTH',
     'SPORTS',
     'CAMPING',
-    'TRAVELLING'
+    'TRAVELLING',
+
   ];
+  sortBy = this.couponType[0];
   constructor(private headertitle: HeaderTitleService, private couponService: CouponServiceService) { }
 
   ngOnInit() {
