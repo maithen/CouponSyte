@@ -13,7 +13,7 @@ import { all } from 'q';
 
 })
 export class CouponsComponent implements OnInit {
-  items;
+  coupons;
 
   couponType = [
     'ALL',
@@ -36,12 +36,26 @@ export class CouponsComponent implements OnInit {
     stuff.subscribe((res) => { this.getCoupon(res); });
   }
   getCoupon(v) {
-    this.items = v.coupon;
+    this.coupons = v.coupon;
     console.log("items")
-    console.log(this.items)
+    console.log(this.coupons)
   }
 
+  sortByPrice(s) {
+    switch (s) {
+      case 'HTL':
+        this.coupons.sort((a, b) => b.price - a.price)
 
+        break;
+      case 'LTH':
+        this.coupons.sort((a, b) => a.price - b.price)
+        break;
+      default:
+        break;
+    }
+
+    console.log(this.coupons)
+  }
 
 
 

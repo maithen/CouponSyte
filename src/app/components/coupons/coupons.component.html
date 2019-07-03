@@ -1,6 +1,14 @@
 <div class="sortBy">
 
   <select style="width: 150px">
+    <option value="" disabled selected>Price</option>
+    <option (click)="sortByPrice('HTL')">Highest To Lowest ↓</option>
+    <option (click)="sortByPrice('LTH')">Lowest To Highest ↑</option>
+
+
+  </select>
+  <select style="width: 150px">
+    <option value="" disabled selected>Category</option>
     <option *ngFor="let type of couponType; let i=index;" (click)="sortBy=type">
       {{type | titlecase}}
     </option>
@@ -13,7 +21,7 @@
 
 
 <ul>
-  <ng-container *ngFor="let coupon of items">
+  <ng-container *ngFor="let coupon of coupons">
     <div *ngIf="coupon.type==sortBy || sortBy==couponType[0]" class="coupon">
       <div class="couponPicture">
         <img src="https://www.dw.com/image/48396304_303.jpg">
