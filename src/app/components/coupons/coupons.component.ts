@@ -13,20 +13,11 @@ import { all } from 'q';
 
 })
 export class CouponsComponent implements OnInit {
+
   coupons;
-
-  couponType = [
-    'ALL',
-    'RESTAURANTS',
-    'ELECTRONICS',
-    'FOOD',
-    'HEALTH',
-    'SPORTS',
-    'CAMPING',
-    'TRAVELLING',
-
-  ];
+  couponType = ['ALL','RESTAURANTS','ELECTRONICS','FOOD','HEALTH','SPORTS','CAMPING', 'TRAVELLING'];
   sortBy = this.couponType[0];
+
   constructor(private headertitle: HeaderTitleService, private couponService: CouponServiceService) { }
 
   ngOnInit() {
@@ -35,6 +26,7 @@ export class CouponsComponent implements OnInit {
     let stuff = this.couponService.getCoupons();
     stuff.subscribe((res) => { this.getCoupon(res); });
   }
+  
   getCoupon(v) {
     this.coupons = v.coupon;
     console.log("items")

@@ -5,27 +5,32 @@
 </div>
 
 <div style="position: absolute; text-align: center; width: 100%; border-radius: 20px;">
-  <ul class="login-div fade-in-left">
 
-    <br>
-    <input type="text" placeholder="username" style=" height: 25px;">
-    <br>
-    <br>
-    <input type="password" placeholder="password" style=" height: 25px;">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <ul class="login-div fade-in-left">
+      <br>
+      <input name="name" type="text" placeholder="username" style=" height: 25px;" (ngModel)="username" required>
+      <br>
+      <br>
+      <input name="password" type="password" placeholder="password" style=" height: 25px;" (ngModel)="password"
+        required>
 
-    <br>
-    <br>
-    <select style=" height: 25px;">
-      <option>Admin</option>
-      <option>Company</option>
-      <option>Customer</option>
-    </select>
-  </ul>
-  <br>
-  <button class="login">
-    Log In
-  </button>
+      <br>
+      <br>
+      <select style=" height: 25px;" name="type" (ngModel)="loginType" required>
+        <option value="null" selected disabled>Login as:</option>
+        <option>Admin</option>
+        <option>Company</option>
+        <option>Customer</option>
+      </select>
 
+    </ul>
+    <br>
+    <button type="submit" class="login" [disabled]="!loginForm.form.valid">
+      Log In
+    </button>
+    <div [hidden]="!loginType.valid">CANT LOGIN</div>
+  </form>
   <button (click)="backClicked()">
     Cancel
   </button>
