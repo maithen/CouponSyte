@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { CompanyServiceService } from 'src/app/services/company-service.service';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
+import { RouterLink, Router } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private _location: Location,
     private companyservice: CompanyServiceService,
-    private adminservice: AdminServiceService) { }
+    private adminservice: AdminServiceService,
+    private routerLink: Router) { }
 
   backClicked() {
     this._location.back();
@@ -30,6 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit(f: NgForm) {
     this.loginType = true;
     this.login(f)
+    this.routerLink.navigateByUrl('')
 
   }
 
@@ -40,6 +44,7 @@ export class LoginComponent implements OnInit {
         break;
       case 'Admin':
         this.adminservice.loginAdmin(f.value).subscribe(f.value);
+
         break;
       default:
         break;

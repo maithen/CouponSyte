@@ -5,8 +5,7 @@
   <ng-content></ng-content>
   <span>
     <button [routerLink]="['/login']" routerLinkActive="router-link-active" *ngIf="!user1">Login</button>
-    <button *ngIf="user1">{{user1}}</button> <button *ngIf="user1">Log Out</button>
+    <button *ngIf="user1">{{user1}}</button> <button *ngIf="user1" (click)="logOut()" [routerLink]="['']">Log
+      Out</button>
   </span>
-
-
 </header>
