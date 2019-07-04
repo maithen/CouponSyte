@@ -2,7 +2,9 @@
   <a [routerLink]="['']" routerLinkActive="router-link-active" (click)="setTitle('Home')">
     <h2>{{title}}</h2>
   </a>
-  <ng-content></ng-content>
+  <span [ngClass]="{'pageTitle': user1}">
+    <ng-content></ng-content>
+  </span>
   <span>
     <button [routerLink]="['/login']" routerLinkActive="router-link-active" *ngIf="!user1">Login</button>
     <button *ngIf="user1">{{user1}}</button> <button *ngIf="user1" (click)="logOut()" [routerLink]="['']">Log
